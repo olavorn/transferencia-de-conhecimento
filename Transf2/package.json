@@ -1,0 +1,14 @@
+{
+  "name": "servidor_web",
+  "version": "0.1.0",
+  "description": "Exercicio de subir o servidor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "4.17.1"
+  },
+  "author": "Luis Petronio",
+  "license": "ISC"
+}
