@@ -1,9 +1,10 @@
 console.log("Olá Mundo")
 var express=require("express")
 var servidorweb=express()
-servidorweb.use(express.static("C:\Dev\transferencia-de-conhecimento\transf2\Static"))
+// "C:\Dev\transferencia-de-conhecimento\transf2\Static"
+servidorweb.use(express.static(__dirname + '\Static'))
 function spto(req,res){
-    res.send("nunca será")
+    res.send(__dirname)
 }
 // servidorweb.get("/",spto);
 // servidorweb.get("/nuncasera",spto);
