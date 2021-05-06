@@ -1,0 +1,20 @@
+<h1>
+    Formulário de Resposta
+</h1>
+<div id="normalRegion" style="display: none;">
+    <div>{nome}</div>
+</div>
+<div id="forceRegion" style="display: none;">
+    <h1>Que a força esteja com você, {nome}!</h1>
+</div>
+<script>
+    {script}
+
+    if ( window.force ){
+        document.getElementById("forceRegion").style.display = "block";
+    }
+    else{
+        document.getElementById("normalRegion").style.display = "block";
+    }
+
+</script>
