@@ -1,0 +1,112 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<cliente>
+    <nome>Olavo
+    </nome>
+    <telefone>55555</telefone>
+    <endereco>
+        <logradouro>asdasd</logradouro>
+    </endereco>
+</cliente>
+
+var q= {
+    nome: "Olavo",
+    telefone: "55555",
+    endereco: {
+        logradouro: "asdasd"
+    }
+}
+
+
+
+<body>
+
+    <!-- Formulário de Pegunta  -->
+    <div id="pergunta">
+        <form>
+        <h1>Formulário do Olavo</h1>
+       
+            <div class="form-group row">
+                <label for="txtNome" class="col-4 col-form-label">Nome</label>
+                <div class="col-8">
+                    <input id="txtNome" name="nome" placeholder="Nome do Usuário" type="text" required="required"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label" for="txtFrase">Frase</label>
+                <div class="col-8">
+                    <input id="txtFrase" name="frase" placeholder="Escreva uma frase" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="offset-4 col-8">
+                    <button onclick="return ResponderPergunta('RespostaNome');" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+       </form>
+    </div>
+
+    
+    <!-- Área da Resposta -->
+    <div id="resposta" style="display: none;">
+        <h1>
+            Formulário de Resposta
+        </h1>
+        <div id="normalRegion">
+            <div id="RespostaNome"></div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+    <script  >
+
+        function ResponderPergunta(placeholderRespostaId){
+            let nome = document.getElementById("txtNome").value; 
+            let frase = document.getElementById("txtFrase").value;
+
+            axios.get('/respostaFormulario?nome=' + nome + '&frase=' + frase)
+                .then(
+                    function (response) {
+                        debugger;
+                        console.log(response);
+                        document.getElementById(placeholderRespostaId).innerHTML = response.data.resposta;
+
+                        //$("#pergunta").hide();
+                        $("#resposta").show();
+                    }
+                )
+                .catch(function (error) {
+                    // handle error
+                    console.error(error);
+                })
+                .then(function () {
+                    // always executed
+                });
+
+            return false;
+        }
+
+
+    </script>
+</body>
+
+</html>
