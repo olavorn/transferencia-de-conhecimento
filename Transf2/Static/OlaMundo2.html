@@ -1,0 +1,25 @@
+<h1>
+    Olá Mundo 2
+</h1>
+<p>... e assim se fez a WEB de novo</p>
+<button onclick="OlaPetronio();">Teste Alterado</button>
+<a href="OlaMundo.html"  >Ir para a segunda página</a>
+<div>
+    Usamos divs o tempo todo
+</div>
+<span id="meuspam">
+    Usamos spans...
+</span>
+<script>
+    
+    function OlaPetronio(){
+
+        if ( confirm("Deseja dizer olá ou ficar vermelho?")){
+            alert('Olá Petronio');
+        }
+        else{
+            document.getElementById("meuspam").innerHTML = "<span style='color:red'>Usamos spans vermelhas... </span>";
+        }
+    }
+
+</script>
